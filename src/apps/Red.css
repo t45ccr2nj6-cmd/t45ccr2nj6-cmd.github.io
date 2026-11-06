@@ -1,0 +1,1349 @@
+/* ============================================================
+   小红书 RED
+   ============================================================ */
+
+.red {
+  --red: #ff2442;
+  --page-bg: #ffffff;
+}
+
+/* ============================================================
+   开屏页
+   ============================================================ */
+.red-splash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.red-splash-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+/* ============================================================
+   首页顶部
+   ============================================================ */
+.red-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 22;
+  padding-top: var(--status-bar-h);
+  background: #fff;
+}
+.red-topbar {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 12px;
+  gap: 8px;
+}
+.red-msg-btn,
+.red-search-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.red-avatar-new {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+}
+.red-mini-avatar-lg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.red-new-badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  padding: 1px 4px;
+  border-radius: 8px;
+  background: #ff2442;
+  color: #fff;
+  font-size: calc(9px * 1.15);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.red-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: flex-end;
+  flex: 1;
+}
+.red-tab {
+  position: relative;
+  padding: 0 2px 8px;
+  font-size: calc(16px * 1.15);
+  font-weight: 500;
+  color: rgba(60, 60, 67, 0.5);
+  transition: color 0.2s ease;
+}
+.red-tab.is-active {
+  color: #000;
+  font-weight: 700;
+}
+.red-tab.is-active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--red);
+}
+
+/* ============================================================
+   瀑布流
+   ============================================================ */
+.red-scroll {
+  padding-top: calc(var(--status-bar-h) + 44px);
+  padding-bottom: 100px;
+}
+.red-bottom-space { height: 12px }
+
+.red-masonry {
+  display: flex;
+  gap: 8px;
+  padding: 10px 10px 0;
+}
+.red-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 卡片 */
+.red-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+}
+.red-card-imgwrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.red-card-img {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f2f2f4;
+  border-radius: 10px;
+}
+.red-card-img-inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.red-card-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 24px 10px 8px;
+  color: #fff;
+  font-size: calc(14px * 1.15);
+  font-weight: 500;
+  line-height: 1.3;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+  border-radius: 0 0 10px 10px;
+}
+.red-live-badge {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: calc(10px * 1.15);
+}
+.red-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+}
+/* 视频卡：右上角半透明圆形播放键 */
+.red-play-badge {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-card-title {
+  padding: 0 4px;
+  font-size: calc(13.5px * 1.15);
+  line-height: 1.34;
+  font-weight: 500;
+  color: #1c1c1e;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.red-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 4px 6px;
+  font-size: calc(11.5px * 1.15);
+  color: rgba(60, 60, 67, 0.55);
+}
+.red-mini-avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+  color: #fff;
+  font-size: calc(9px * 1.15);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.red-card-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.red-card-likes {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: 0 0 auto;
+}
+
+/* 关注·新品发布 横卡 */
+.red-follow-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.red-follow-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: calc(11px * 1.15);
+  color: var(--red);
+  font-weight: 600;
+}
+.red-follow-label { color: #333 }
+.red-follow-img {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.red-follow-img-inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.red-follow-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: calc(11px * 1.15);
+  color: rgba(60,60,67,0.55);
+}
+.red-follow-author { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.red-follow-views { display: flex; align-items: center; gap: 2px }
+
+/* ============================================================
+   底部 Tab Bar
+   ============================================================ */
+.red-tabbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  /* 栏内容高度固定，底部只预留内部 Home Indicator 安全区 */
+  padding: 6px 0 var(--phone-safe-bottom);
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.08);
+}
+.red-tabbar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: rgba(60, 60, 67, 0.5);
+  font-size: calc(10px * 1.15);
+  font-weight: 500;
+}
+.red-tabbar-item.is-active { color: #000; font-weight: 600 }
+.red-tabbar-item svg { width: 28px; height: 28px }
+.red-tabbar-ico { position: relative; display: flex }
+.red-tabbar-badge {
+  position: absolute;
+  top: -5px;
+  right: -12px;
+  min-width: 24px;
+  height: 16px;
+  padding: 0 5px;
+  border-radius: 8px;
+  background: #ff2442;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-publish-btn {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 30px;
+  margin: 0 6px;
+  border-radius: 8px;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   「我」页面
+   ============================================================ */
+.red-me {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.red-me-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 22;
+  padding-top: var(--status-bar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--status-bar-h) + 44px);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.red-me-menu {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-me-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.red-me-edit {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: calc(12px * 1.15);
+  color: #333;
+  font-weight: 500;
+}
+.red-me-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 下滑后：顶部收起为 菜单 + 居中头像 + 两个图标，背后压暗 */
+.red-me.is-compact .red-me-topbar {
+  background: rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.red-me-top-avatar {
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.red-me.is-compact .red-me-tabs {
+  border-radius: 14px 14px 0 0;
+}
+
+.red-me-scroll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 100px;
+}
+.red-me-scroll::-webkit-scrollbar { display: none }
+
+/* 顶部背景图：覆盖到三张功能卡上方 */
+.red-me-hero {
+  position: relative;
+}
+.red-me-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/red-bg.webp') center 20% / cover no-repeat;
+}
+.red-me-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* 深色渐变遮罩：整体压暗保证白字可读，顶部更深，底部与白色区域硬切 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.56) 22%, rgba(0,0,0,0.58) 70%, rgba(0,0,0,0.66) 100%);
+}
+.red-me-hero > *:not(.red-me-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* 个人资料 */
+.red-profile {
+  display: flex;
+  gap: 14px;
+  padding: calc(var(--status-bar-h) + 56px) 16px 0;
+}
+.red-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  flex: 0 0 auto;
+  object-fit: cover;
+}
+.red-profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.red-profile-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: calc(18px * 1.15);
+  font-weight: 700;
+  color: #fff;
+}
+.red-profile-id {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: calc(12px * 1.15);
+  color: rgba(255,255,255,0.85);
+}
+.red-profile-ip {
+  font-size: calc(12px * 1.15);
+  color: rgba(255,255,255,0.6);
+}
+
+/* 统计 */
+.red-stats {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px 4px;
+}
+.red-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 0 7px;
+  white-space: nowrap;
+}
+.red-stat:first-child { padding-left: 0 }
+.red-stat:last-child { padding-right: 0 }
+.red-stat b {
+  font-size: calc(17px * 1.15);
+  font-weight: 700;
+  color: #fff;
+}
+.red-stat span {
+  font-size: calc(11px * 1.15);
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+.red-stat-divider {
+  width: 0.5px;
+  height: 14px;
+  background: rgba(255,255,255,0.35);
+}
+
+/* 简介 */
+.red-bio {
+  padding: 8px 16px 6px;
+  font-size: calc(13.5px * 1.15);
+  color: rgba(255,255,255,0.92);
+  line-height: 1.5;
+  letter-spacing: 3px;
+}
+.red-bio-emojis {
+  letter-spacing: 4px;
+}
+.red-bio-mail {
+  letter-spacing: 0;
+  font-size: calc(12px * 1.15);
+}
+.red-bio-mail-icon {
+  margin-right: 4px;
+}
+.red-bio-gender {
+  margin-top: 3px;
+}
+.red-gender {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(50,50,50,0.6);
+  color: #6fb1ff;
+  font-size: calc(12px * 1.15);
+  font-weight: 700;
+}
+
+/* 功能卡 */
+.red-me-cards {
+  display: flex;
+  gap: 8px;
+  padding: 6px 16px 12px;
+}
+.red-me-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 7px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.red-me-card-title {
+  font-size: calc(12.5px * 1.15);
+  font-weight: 600;
+  color: #fff;
+  margin-top: 2px;
+}
+.red-me-card-sub {
+  font-size: calc(11px * 1.15);
+  color: rgba(255,255,255,0.6);
+}
+
+/* 子 tab */
+.red-me-tabs {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-bottom: 0.5px solid rgba(0,0,0,0.06);
+  background: #fff;
+  position: sticky;
+  top: calc(var(--status-bar-h) + 44px);
+  z-index: 10;
+}
+.red-me-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  padding: 10px 4px;
+  font-size: calc(15.5px * 1.15);
+  color: #999;
+}
+.red-me-tab.is-active {
+  color: #111;
+  font-weight: 700;
+}
+.red-me-tab.is-active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--red);
+}
+.red-me-tab.is-locked {
+  opacity: 0.55;
+  cursor: default;
+}
+.red-me-search {
+  margin-left: auto;
+  padding: 0 8px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+/* 笔记瀑布流：两列各自堆叠，不左右对齐 */
+.red-me-masonry {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+}
+.red-me-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.red-me-note {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.red-me-note-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #eee;
+  position: relative;
+}
+.red-me-note-img-inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* 横图：4:3（参考我的主页帖子横图比例） */
+.red-me-note-img.is-wide {
+  aspect-ratio: 4 / 3;
+}
+
+/* 老内核不支持 aspect-ratio 时按 padding 比例兜底（内部图片已绝对定位铺满） */
+@supports not (aspect-ratio: 3 / 4) {
+  .red-me-note-img {
+    height: 0;
+    padding-top: 133.333%;
+  }
+  .red-me-note-img.is-wide {
+    padding-top: 75%;
+  }
+}
+.red-me-views {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #fff;
+  font-size: calc(10.5px * 1.15);
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.red-me-play {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-me-note-title {
+  padding: 6px 8px 2px;
+  font-size: calc(13px * 1.15);
+  font-weight: 500;
+  color: #1c1c1e;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* 只拉开 emoji 周边间距，不影响普通文字 */
+.red-emoji {
+  margin: 0 4px;
+}
+.red-me-note-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px 8px;
+  font-size: calc(11px * 1.15);
+  color: rgba(60,60,67,0.55);
+}
+.red-me-note-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.red-me-note-author {
+  color: #666;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.red-me-note-time {
+  white-space: nowrap;
+  font-size: calc(9px * 1.15);
+  color: rgba(60,60,67,0.45);
+}
+.red-me-note-likes { display: flex; align-items: center; gap: 2px; flex: 0 0 auto }
+
+/* ============================================================
+   消息页
+   ============================================================ */
+.red-msg-page {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.red-nonfollow-overlay {
+  z-index: 40;
+  animation: red-slide-in-right 0.26s ease;
+}
+.red-nonfollow-overlay.is-closing {
+  animation: red-slide-out-right 0.26s ease forwards;
+}
+.red-detail-overlay {
+  z-index: 50;
+  animation: red-slide-in-right 0.26s ease;
+}
+.red-detail-overlay.is-closing {
+  animation: red-slide-out-right 0.26s ease forwards;
+}
+@keyframes red-slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes red-slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+.red-msg-header {
+  padding-top: var(--status-bar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--status-bar-h) + 44px);
+  padding-left: 16px;
+  padding-right: 12px;
+  background: #fff;
+}
+.red-msg-title {
+  font-size: calc(19px * 1.15);
+  font-weight: 700;
+  color: #111;
+}
+.red-msg-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.red-msg-header-actions button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red-msg-scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 100px;
+}
+.red-msg-scroll::-webkit-scrollbar { display: none }
+
+/* 顶部三个 icon */
+.red-msg-topicons {
+  display: flex;
+  padding: 20px 8px 8px;
+}
+.red-msg-topicon {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+.red-msg-topicon-wrap {
+  position: relative;
+}
+.red-msg-topicon-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-badge-99 {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  min-width: 22px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #ff2442;
+  color: #fff;
+  font-size: calc(10px * 1.15);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+.red-msg-topicon-label {
+  font-size: calc(14px * 1.15);
+  color: #333;
+}
+
+/* 消息列表 */
+.red-msg-threads {
+  padding: 8px 0;
+}
+.red-msg-thread {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px 16px;
+  gap: 12px;
+  text-align: left;
+}
+.red-msg-thread.is-clickable { cursor: pointer }
+.red-msg-thread.is-clickable:active { background: #f5f5f5 }
+.red-msg-thread:disabled { cursor: default }
+.red-msg-thread-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.red-msg-thread-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.red-msg-thread-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.red-msg-thread-name {
+  font-size: calc(16.5px * 1.15);
+  font-weight: 600;
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.red-msg-thread-time {
+  font-size: calc(11px * 1.15);
+  color: #999;
+  flex: 0 0 auto;
+  letter-spacing: 0.4px;
+}
+.red-msg-thread-preview {
+  font-size: calc(12.5px * 1.15);
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+.red-msg-unread {
+  flex: 0 0 auto;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: #ff2442;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 陌生人私信每条右侧的未读红标：红色小圆 + 白色 1 */
+.red-nf-unread {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: #ff2442;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red-msg-dot {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff2442;
+}
+
+/* ============================================================
+   未关注人消息列表 / 子页导航
+   ============================================================ */
+.red-msg-subheader {
+  padding-top: var(--status-bar-h);
+  display: flex;
+  align-items: center;
+  height: calc(var(--status-bar-h) + 44px);
+  padding-left: 8px;
+  padding-right: 12px;
+  background: #fff;
+  border-bottom: 0.5px solid rgba(0,0,0,0.06);
+}
+.red-back-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-msg-subtitle {
+  flex: 1;
+  min-width: 0;
+  font-size: calc(15px * 1.15);
+  font-weight: 600;
+  color: #111;
+  text-align: center;
+  margin-right: 36px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.red-msg-sub-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.red-msg-sub-actions button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-msg-action-disabled {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.red-nf-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 0.5px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: opacity 0.25s ease, max-height 0.25s ease, padding 0.25s ease;
+  max-height: 200px;
+  overflow: hidden;
+}
+.red-nf-item.is-deleting {
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.red-nf-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: #eee;
+  flex: 0 0 auto;
+}
+.red-nf-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.red-nf-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.red-nf-name {
+  font-size: calc(14px * 1.15);
+  font-weight: 600;
+  color: #111;
+}
+.red-nf-time {
+  font-size: calc(11px * 1.15);
+  color: #999;
+  letter-spacing: 0.4px;
+}
+.red-nf-preview {
+  font-size: calc(13px * 1.15);
+  color: #999;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.red-nf-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+.red-nf-reply {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  color: #666;
+  font-size: calc(12px * 1.15);
+  background: #fff;
+}
+.red-nf-reply:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.red-nf-close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+}
+
+/* ============================================================
+   消息详情
+   ============================================================ */
+.red-detail-head {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-right: 28px;
+}
+.red-detail-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+.red-detail-name {
+  font-size: calc(14px * 1.15);
+  font-weight: 600;
+  color: #111;
+}
+.red-detail-more {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red-detail-scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.red-detail-scroll::-webkit-scrollbar { display: none }
+
+.red-detail-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  padding: 32px 20px 16px;
+  gap: 10px;
+}
+.red-detail-big-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: #eee;
+}
+.red-detail-profile-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: calc(19px * 1.15);
+  font-weight: 700;
+  color: #111;
+}
+.red-detail-quote {
+  font-size: calc(13px * 1.15);
+  color: #666;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+}
+.red-detail-meta {
+  font-size: calc(11px * 1.15);
+  color: #999;
+  letter-spacing: 0.4px;
+}
+
+.red-detail-time {
+  align-self: stretch;
+  text-align: center;
+  font-size: calc(11px * 1.15);
+  color: #bbb;
+  padding: 8px 0;
+}
+
+.red-detail-msg {
+  margin: 4px 16px 0;
+  padding: 10px 14px;
+  background: #f0f0f0;
+  border-radius: 18px;
+  border-top-left-radius: 4px;
+  max-width: 72%;
+  font-size: calc(14px * 1.15);
+  color: #111;
+  line-height: 1.5;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.red-detail-actions-bar {
+  display: flex;
+  gap: 0;
+  padding: 8px 0;
+  border-top: 0.5px solid rgba(0,0,0,0.06);
+  background: #fff;
+}
+.red-detail-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: calc(15px * 1.15);
+  color: #111;
+  height: 36px;
+}
+.red-detail-action:disabled {
+  cursor: default;
+}
+
+.red-detail-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 10px;
+  background: #fff;
+  border-top: 0.5px solid rgba(0,0,0,0.06);
+}
+.red-input-mic,
+.red-input-smile,
+.red-input-plus {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.red-input-field {
+  flex: 1;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 17px;
+  background: #f2f2f4;
+  color: rgba(60,60,67,0.4);
+  font-size: calc(15px * 1.15);
+}
+
+/* ============================================================
+   未关注人空状态
+   ============================================================ */
+.red-nf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  gap: 10px;
+}
+.red-nf-empty-img {
+  width: 130px;
+  height: auto;
+  opacity: 0.85;
+}
+.red-nf-empty-text {
+  font-size: calc(13px * 1.15);
+  color: #bbb;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   删除确认底部弹窗
+   ============================================================ */
+.red-confirm-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.red-confirm-sheet {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  padding: 18px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.red-confirm-text {
+  font-size: calc(12px * 1.15);
+  color: #999;
+  padding: 0 20px 18px;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+.red-confirm-ok {
+  width: 100%;
+  padding: 14px 0;
+  font-size: calc(15px * 1.15);
+  color: #ff2442;
+  font-weight: 500;
+}
+.red-confirm-divider {
+  width: 100%;
+  height: 0.5px;
+  background: rgba(0,0,0,0.08);
+}
+.red-confirm-cancel {
+  width: 100%;
+  padding: 14px 0 calc(14px + var(--phone-safe-bottom));
+  font-size: calc(15px * 1.15);
+  color: #111;
+  font-weight: 500;
+}

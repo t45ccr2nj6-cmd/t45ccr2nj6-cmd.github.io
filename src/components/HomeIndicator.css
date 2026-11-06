@@ -1,0 +1,36 @@
+.hi {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hi-bar {
+  width: 134px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.85);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.hi:active .hi-bar {
+  transform: scaleX(0.6);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* 浅色壁纸上的深色横条 */
+.hi-bar-dark {
+  background: rgba(0, 0, 0, 0.45);
+}
+.hi:active .hi-bar-dark {
+  background: rgba(0, 0, 0, 0.25);
+}

@@ -1,0 +1,60 @@
+.sb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* 覆盖完整的内部顶部安全区；App 导航 chrome 仍按 --status-bar-h 计算 */
+  height: var(--phone-safe-top);
+  padding: 12px 36px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  z-index: 50;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+
+.sb-translucent {
+  background: transparent;
+}
+
+/* 浅色 app（白底相册）：状态栏透明，由 Photos 自己的 .ph-header 提供统一模糊底 */
+.sb-dark {
+  color: #000;
+}
+
+/* translucent + dark 组合：完全透明，避免和 .ph-header 形成双层模糊分割线 */
+.sb-translucent.sb-dark {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.sb-time {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.sb-carrier {
+  font-size: 15px;
+  line-height: 1;
+  padding-top: 2px;
+  font-weight: 700;
+  margin-left: 5px;
+  letter-spacing: 0.5px;
+}
+
+.sb-right {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-top: 2px;
+}

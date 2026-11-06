@@ -1,0 +1,177 @@
+/* ============================================================
+   备忘录（iOS 风格）
+   ============================================================ */
+
+.not {
+  --page-bg: #ffffff;
+  --nav-bg: rgba(249, 249, 249, 0.9);
+  --page-fg: #000;
+}
+
+.not-scroll {
+  padding-top: calc(var(--status-bar-h) + 58px);
+  padding-bottom: 110px;
+}
+
+.not-edit { color: #ff9f0a }
+
+.not-count {
+  padding: 6px 20px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: rgba(60, 60, 67, 0.45);
+}
+
+.not-list {
+  margin: 0 16px;
+  border-radius: 16px;
+  background: #fafafa;
+  overflow: hidden;
+}
+.not-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  text-align: left;
+  background: none;
+  position: relative;
+}
+.not-row:active { background: rgba(0, 0, 0, 0.05) }
+.not-row::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 0;
+  bottom: 0;
+  height: 0.5px;
+  background: rgba(60, 60, 67, 0.16);
+}
+.not-row:last-child::after { display: none }
+
+.not-row-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.not-row-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.not-row-preview {
+  font-size: 13.5px;
+  color: rgba(60, 60, 67, 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.not-row-date {
+  flex: 0 0 auto;
+  font-size: 12.5px;
+  color: rgba(60, 60, 67, 0.42);
+  padding-top: 2px;
+}
+
+.ios-fab.not-fab {
+  background: #ffcc00;
+  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+}
+.ios-fab.not-fab.is-locked { cursor: default; pointer-events: none; opacity: 0.9 }
+
+/* ============================================================
+   编辑页
+   ============================================================ */
+
+.not-editor-page { background: #fffdf7 }
+.not-subnav { background: rgba(255, 253, 247, 0.92) }
+.not-back-text { color: #ff9f0a }
+.not-done {
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  padding: 4px 2px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ff9f0a;
+}
+
+.not-editor {
+  position: absolute;
+  top: calc(var(--status-bar-h) + 44px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 20px 42px;
+}
+.not-editor-date {
+  font-size: 12px;
+  color: rgba(60, 60, 67, 0.4);
+  padding: 4px 0 10px;
+}
+
+/* 只读笔记：标题用标题格式 */
+.not-tap-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+  color: #000;
+  padding: 4px 0 10px;
+}
+
+/* 只读笔记：点句切换粤语 / 普通话 */
+.not-tap-line {
+  display: block;
+  width: 100%;
+  margin: 0 0 18px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: #1c1c1e;
+  text-align: left;
+  cursor: pointer;
+}
+.not-title-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #000;
+  padding: 4px 0 8px;
+}
+.not-title-input::placeholder { color: rgba(60, 60, 67, 0.28) }
+
+.not-body-input {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: #1c1c1e;
+  padding: 6px 0 0;
+}
+.not-body-input::placeholder { color: rgba(60, 60, 67, 0.28) }

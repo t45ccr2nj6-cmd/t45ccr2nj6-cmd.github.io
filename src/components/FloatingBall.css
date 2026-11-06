@@ -1,0 +1,53 @@
+/* 悬浮球（AssistiveTouch）：黑色方圆底座 + 深灰环 + 中灰环 + 白色圆心 */
+.fball {
+  position: absolute;
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(10, 11, 13, 0.86);
+  backdrop-filter: blur(6px) saturate(1.05);
+  -webkit-backdrop-filter: blur(6px) saturate(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 0.5px 0 rgba(255, 255, 255, 0.12);
+  display: grid;
+  place-items: center;
+  touch-action: none;
+  cursor: grab;
+  opacity: 1;
+  transition: opacity 0.35s ease, transform 0.18s ease;
+}
+.fball.is-faded {
+  opacity: 0.38;
+}
+.fball.is-dragging {
+  cursor: grabbing;
+  transform: scale(1.04);
+}
+
+/* 中间三层同心正圆，全部居中叠放 */
+.fball-circle {
+  grid-area: 1 / 1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 第三层：深灰环（外径 43，距黑底 6.5） */
+.fball-c3 {
+  width: 43px;
+  height: 43px;
+  background: linear-gradient(180deg, #6d7074 0%, #4b4d50 100%);
+}
+
+/* 第二层：中灰环（外径 35，环宽 4） */
+.fball-c2 {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(180deg, #9b9ea2 0%, #7c7f83 100%);
+}
+
+/* 第一层：白色实心圆心（直径 27，环宽 4） */
+.fball-c1 {
+  width: 27px;
+  height: 27px;
+  background: #fff;
+}

@@ -1,0 +1,41 @@
+# ============ Netlify 静态资源缓存策略 ============
+# Netlify _headers glob:
+#   *  = 单层目录内任意字符（不跨 /）
+#   ** = 跨多层目录任意字符
+# 规则从上到下优先匹配。
+
+# —— 构建产物（Vite 带 hash 的 JS/CSS）—— 文件名含 hash，内容稳定
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# —— 照片缩略图/高清图专用路径 —— 单独一条最清晰
+/photos-thumbs/**
+  Cache-Control: public, max-age=2592000
+/photos-hd/**
+  Cache-Control: public, max-age=2592000
+
+# —— 所有 WebP（含子目录）—— 文件名不变但内容稳定
+/**/*.webp
+  Cache-Control: public, max-age=2592000
+
+# —— 所有原始 JPG/JPEG/PNG/SVG（含子目录）—— 兜底
+/**/*.jpg
+  Cache-Control: public, max-age=2592000
+/**/*.jpeg
+  Cache-Control: public, max-age=2592000
+/**/*.png
+  Cache-Control: public, max-age=2592000
+/**/*.svg
+  Cache-Control: public, max-age=2592000
+
+# —— 视频/音频 ——
+/**/*.mp3
+  Cache-Control: public, max-age=2592000
+/**/*.mp4
+  Cache-Control: public, max-age=2592000
+
+# —— HTML 页面短缓存 ——
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate

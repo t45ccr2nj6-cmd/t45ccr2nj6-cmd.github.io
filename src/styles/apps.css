@@ -1,0 +1,268 @@
+/* ============================================================
+   跨 app 复用的 iOS 页面骨架（浅色 app 使用）
+   - 页面统一铺满状态栏下沿 → Home Indicator 上方
+   - 顶部导航 / 大标题 / 滚动区 / 分组卡片 / 开关
+   ============================================================ */
+
+.ios-app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--page-bg, #fff);
+  color: var(--page-fg, #000);
+  animation: ios-app-in 0.34s cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+@keyframes ios-app-in {
+  from { opacity: 0; transform: scale(0.94) }
+  to { opacity: 1; transform: scale(1) }
+}
+
+/* —— 滚动容器 —— */
+.ios-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.ios-scroll::-webkit-scrollbar { display: none }
+
+/* —— 顶部导航：大标题（Settings / Notes / Reminders / Music） —— */
+.ios-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--status-bar-h) + 58px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 16px 8px 19px;
+  z-index: 20;
+  background: var(--nav-bg, rgba(255, 255, 255, 0.72));
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  transition: background 0.25s ease;
+}
+.ios-header-title {
+  font-size: 33px;
+  font-weight: 700;
+  letter-spacing: -0.9px;
+  line-height: 1;
+}
+.ios-header-action {
+  font-size: 16px;
+  font-weight: 500;
+  color: #007AFF;
+  padding: 4px 2px;
+}
+
+/* —— 顶部导航：二级页（返回 + 居中标题） —— */
+.ios-subnav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--status-bar-h) + 44px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 16px 8px;
+  z-index: 20;
+  background: var(--nav-bg, rgba(255, 255, 255, 0.72));
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+.ios-back {
+  position: absolute;
+  left: 6px;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 6px;
+  color: #007AFF;
+  font-size: 17px;
+  font-weight: 400;
+}
+.ios-back:active { opacity: 0.55 }
+.ios-nav-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+/* —— 分组卡片 —— */
+.ios-card {
+  background: var(--card-bg, #fff);
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0 16px;
+}
+
+/* —— 列表行 —— */
+.ios-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px 10px 16px;
+  background: none;
+  text-align: left;
+  color: inherit;
+}
+.ios-row:active { background: rgba(0, 0, 0, 0.045) }
+.ios-row-label {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+}
+.ios-row-value {
+  font-size: 16px;
+  color: rgba(60, 60, 67, 0.5);
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ios-row-sep {
+  height: 0.5px;
+  background: rgba(60, 60, 67, 0.18);
+  margin-left: 56px;
+}
+.ios-row-sep.is-full { margin-left: 0 }
+
+/* —— iOS 开关 —— */
+.ios-switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 51px;
+  height: 31px;
+  border-radius: 16px;
+  background: #e6e6ea;
+  transition: background 0.22s ease;
+  padding: 0;
+}
+.ios-switch.is-on { background: #34c759 }
+.ios-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.12);
+  transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+.ios-switch.is-on .ios-switch-knob { transform: translateX(20px) }
+
+/* —— 右箭头 —— */
+.ios-chev { flex: 0 0 auto; opacity: 0.9 }
+
+/* —— 底部 Tab Bar —— */
+.ios-tabbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 6px 0 10px;
+  background: var(--tabbar-bg, rgba(249, 249, 249, 0.92));
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  border-top: 0.5px solid rgba(60, 60, 67, 0.14);
+}
+.ios-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+  padding: 2px 0;
+  color: rgba(60, 60, 67, 0.55);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+.ios-tab.is-active { color: var(--tab-accent, #007AFF) }
+.ios-tab svg { width: 25px; height: 25px }
+.ios-tab:active { opacity: 0.6 }
+
+/* —— 圆形图标按钮（列表左侧） —— */
+.ios-icon {
+  flex: 0 0 auto;
+  width: 29px;
+  height: 29px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* —— 搜索框 —— */
+.ios-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: rgba(118, 118, 128, 0.12);
+  color: rgba(60, 60, 67, 0.45);
+}
+.ios-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #000;
+  font-family: inherit;
+}
+.ios-search input::placeholder { color: rgba(60, 60, 67, 0.35) }
+
+/* —— 空状态 —— */
+.ios-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 64px 24px;
+  color: rgba(60, 60, 67, 0.4);
+  font-size: 15px;
+  text-align: center;
+}
+
+/* —— 底部主按钮（新增） —— */
+.ios-fab {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 30;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fab-bg, #007AFF);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+.ios-fab:active { transform: scale(0.94) }

@@ -1,0 +1,152 @@
+/* ============================================================
+   提醒事项（iOS 风格）
+   ============================================================ */
+
+.rmd {
+  --page-bg: #ffffff;
+  --nav-bg: rgba(249, 249, 249, 0.9);
+  --page-fg: #000;
+}
+
+.rmd-scroll {
+  padding-top: calc(var(--status-bar-h) + 58px);
+  padding-bottom: 32px;
+}
+
+.rmd-add {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff9500;
+  margin-bottom: -2px;
+}
+
+.rmd-section {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 24px 8px;
+}
+.rmd-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: rgba(60, 60, 67, 0.45);
+}
+.rmd-section-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(60, 60, 67, 0.35);
+}
+
+.rmd-list {
+  margin: 0 14px;
+  border-radius: 16px;
+  background: #fafafa;
+  overflow: hidden;
+}
+
+.rmd-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  position: relative;
+}
+.rmd-row::after {
+  content: '';
+  position: absolute;
+  left: 44px;
+  right: 0;
+  bottom: 0;
+  height: 0.5px;
+  background: rgba(60, 60, 67, 0.16);
+}
+.rmd-row:last-child::after { display: none }
+
+.rmd-check {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.rmd-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 149, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.rmd-check.is-done .rmd-dot {
+  background: linear-gradient(180deg, #ffb340, #ff9500);
+  border-color: transparent;
+}
+
+.rmd-row-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  background: none;
+}
+.rmd-title {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+.rmd-title.is-done {
+  color: rgba(60, 60, 67, 0.4);
+  text-decoration: line-through;
+}
+.rmd-due {
+  font-size: 12.5px;
+  color: rgba(60, 60, 67, 0.45);
+}
+
+/* —— 新增行 —— */
+.rmd-row--input { padding-left: 14px }
+.rmd-plus {
+  flex: 0 0 auto;
+  width: 24px;
+  text-align: center;
+  font-size: 17px;
+  color: #ff9500;
+}
+.rmd-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  color: #000;
+}
+.rmd-input::placeholder { color: rgba(60, 60, 67, 0.35) }
+.rmd-confirm {
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff9500;
+  padding: 2px 4px;
+}
+
+.rmd-footnote {
+  padding: 20px 28px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(60, 60, 67, 0.38);
+}

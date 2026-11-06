@@ -1,0 +1,61 @@
+/**
+ * iOS 设计 token。
+ * 这里统一定义颜色、字号、间距、圆角和阴影，
+ * 所有组件都消费这些变量，保证视觉一致。
+ */
+:root {
+  /* —— 主文字 —— */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --text-tertiary: rgba(255, 255, 255, 0.3);
+  --text-on-light: #1c1c1e;
+  --text-on-light-dim: rgba(60, 60, 67, 0.6);
+
+  /* —— 系统颜色 —— */
+  --system-blue: #007aff;
+  --system-green: #34c759;
+  --system-red: #ff3b30;
+  --system-orange: #ff9500;
+  --system-yellow: #ffcc00;
+  --system-purple: #af52de;
+  --system-pink: #ff2d55;
+  --system-cyan: #32ade6;
+
+  /* —— 背景 —— */
+  --bg-black: #000000;
+  --bg-elevated: rgba(118, 118, 128, 0.24);
+  --bg-widget: rgba(118, 118, 128, 0.16);
+
+  /* —— 磨砂玻璃 —— */
+  --blur-light: rgba(255, 255, 255, 0.18);
+  --blur-medium: rgba(30, 30, 30, 0.5);
+  --blur-strong: rgba(0, 0, 0, 0.6);
+
+  /* —— 尺寸 —— */
+  /* 模拟器内部固定安全区：不随宿主设备变化。
+     宿主浏览器的 env(safe-area-inset-*) 只用于最外层外壳，不参与模拟器内部布局。 */
+  --phone-safe-top: 59px;
+  --phone-safe-bottom: 34px;
+  /* App 顶部状态栏/导航 chrome 高度（内部坐标系，从模拟器屏幕顶端算起） */
+  --status-bar-h: 54px;
+
+  /* —— 圆角 —— */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-full: 999px;
+
+  /* —— 间距 —— */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+
+  /* —— 阴影 —— */
+  --shadow-app-icon: 0 1px 2px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-inner: inset 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+}

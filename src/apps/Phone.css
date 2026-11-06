@@ -1,0 +1,515 @@
+/* ============================================================
+   电话（iOS 26 统一设计：悬浮玻璃 Dock + 大圆键盘）
+   ============================================================ */
+
+.phn {
+  --page-bg: #ffffff;
+  --page-fg: #000;
+}
+
+/* —— 顶栏：Edit 胶囊 / 标题 / 筛选 —— */
+.phn-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--status-bar-h) + 52px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 16px 10px;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+}
+.phn-topside { width: 64px }
+
+.phn-glass {
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1), inset 0 0 0 0.5px rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+.phn-edit {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 18px;
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+.phn-edit:active { background: rgba(240, 240, 244, 0.9) }
+.phn-filter {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phn-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: #000;
+}
+
+.phn-scroll {
+  padding-top: calc(var(--status-bar-h) + 52px);
+  padding-bottom: 96px;
+}
+
+/* —— Recents 大标题 —— */
+.phn-section-title {
+  padding: 16px 16px 8px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: #000;
+}
+
+/* —— 通话行 —— */
+.phn-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+.phn-row::after {
+  content: '';
+  position: absolute;
+  left: 74px;
+  right: 0;
+  bottom: 0;
+  height: 0.5px;
+  background: rgba(60, 60, 67, 0.12);
+}
+.phn-row:last-child::after { display: none }
+
+.phn-avatar {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #dedee4 0%, #c6c6cf 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.phn-row-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.phn-number {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.phn-number.is-missed { color: #ff3b30 }
+.phn-sub {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: rgba(60, 60, 67, 0.55);
+}
+.phn-arrow { flex: 0 0 auto; margin-top: 1px }
+.phn-note {
+  font-size: 14px;
+  color: rgba(60, 60, 67, 0.55);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phn-time {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  margin-top: 3px;
+  font-size: 15px;
+  color: rgba(60, 60, 67, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+.phn-callback {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(120, 120, 128, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phn-callback:active { background: rgba(120, 120, 128, 0.22) }
+.phn-info {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* —— 通讯录：首字母分组 / 首字头像 / 右侧索引 —— */
+.phn-group-head {
+  padding: 4px 16px 3px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8e8e93;
+  background: #f7f7f7;
+}
+.phn-row .phn-letter-avatar {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #c6c6cd 0%, #a9a9b2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0;
+}
+.phn-index {
+  position: absolute;
+  right: 2px;
+  top: calc(var(--status-bar-h) + 150px);
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  pointer-events: none;
+}
+.phn-index span {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(0, 122, 255, 0.5);
+}
+.phn-index span.is-on { color: #007aff }
+.phn-tail { height: 12px }
+
+/* —— 底部悬浮 Dock —— */
+.phn-dock {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 30;
+}
+.phn-dock-pill {
+  flex: 1;
+  height: 60px;
+  display: flex;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.14), inset 0 0 0 0.5px rgba(0, 0, 0, 0.05);
+}
+.phn-dock-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: #000;
+  background: none;
+}
+.phn-dock-item.is-active { color: #007aff }
+.phn-dock-icon {
+  position: relative;
+  display: flex;
+  line-height: 0;
+}
+.phn-dock-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+}
+.phn-badge {
+  position: absolute;
+  top: -5px;
+  right: -11px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #ff3b30;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 17px;
+  text-align: center;
+}
+.phn-dock-search {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.14), inset 0 0 0 0.5px rgba(0, 0, 0, 0.05);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phn-dock-search:active { background: rgba(240, 240, 244, 0.9) }
+
+/* —— 拨号键盘 —— */
+.phn-keypad {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--status-bar-h) + 8px) 30px 126px;
+}
+/* 显示区吃掉顶部多余空间，把按键整体压到下半屏 */
+.phn-display {
+  flex: 1;
+  min-height: 72px;
+  max-height: 234px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.phn-keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px 15px;
+  place-items: center;
+}
+.phn-key {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #eaeaef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+.phn-key:active {
+  background: #d5d5dc;
+  transform: scale(0.96);
+}
+.phn-key-d {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.06;
+  color: #000;
+}
+.phn-key-l {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: #000;
+  opacity: 0.7;
+  min-height: 11px;
+}
+
+.phn-keypad-actions {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-top: 22px;
+  padding: 0 4px;
+}
+.phn-call-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #4ddb52 0%, #28c24a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(40, 194, 74, 0.35);
+}
+.phn-call-btn:active { filter: brightness(0.92) }
+
+/* —— 矮屏（320×568 / 360×640）：压缩拨号键盘，避免通话键压到底部 Dock —— */
+@media (max-width: 480px) and (max-height: 640px) {
+  .phn-keypad { padding-bottom: 108px; }
+  .phn-display { min-height: 56px; font-size: 32px; }
+  .phn-keys { gap: 8px 10px; }
+  .phn-key { width: 54px; height: 54px; }
+  .phn-key-d { font-size: 24px; }
+  .phn-key-l { min-height: 9px; font-size: 9px; }
+  .phn-keypad-actions { margin-top: 12px; }
+  .phn-call-btn { width: 56px; height: 56px; }
+}
+.phn-del {
+  justify-self: center;
+  padding: 10px;
+  background: none;
+}
+
+/* —— 通讯录 —— */
+.phn-contact-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.phn-contact-btn:active { background: rgba(0, 0, 0, 0.06) }
+.phn-mycard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 0.5px solid rgba(60, 60, 67, 0.12);
+}
+.phn-myavatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, #7fd4ff 0%, #4a8cff 48%, #8a5cf6 100%);
+  color: #fff;
+  font-size: 21px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phn-mycard-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.phn-mycard-name { font-size: 17px; font-weight: 600 }
+.phn-mycard-sub { font-size: 13px; color: rgba(60, 60, 67, 0.5) }
+.phn-mycard-chev { font-size: 22px; color: rgba(60, 60, 67, 0.3) }
+.phn-nocontacts {
+  padding: 44px 24px;
+  text-align: center;
+  font-size: 15px;
+  color: rgba(60, 60, 67, 0.4);
+}
+
+/* —— 通话中 —— */
+.phn-call {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  background: linear-gradient(180deg, #2b2b2f 0%, #101013 55%, #08080a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: phn-call-in 0.3s ease;
+}
+@keyframes phn-call-in {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+.phn-call-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: var(--status-bar-h);
+  color: #fff;
+}
+.phn-call-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.phn-call-number {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+}
+.phn-call-status {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.phn-call-timer {
+  margin-top: 2px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* —— 接通后的字幕气泡 —— */
+.phn-subtitle {
+  width: 320px;
+  min-height: 36px;
+  margin-top: 22px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  transition: height 0.25s ease;
+  -webkit-overflow-scrolling: touch;
+}
+.phn-subtitle::-webkit-scrollbar { display: none }
+.phn-sub-line {
+  padding: 8px 14px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+.phn-sub-name { color: rgba(255, 255, 255, 0.5) }
+.phn-sub-line.is-current { color: #fff }
+
+.phn-end {
+  width: 74px;
+  height: 74px;
+  margin-bottom: 54px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ff5b52 0%, #e02020 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(224, 32, 32, 0.4);
+}
+.phn-end:active { filter: brightness(0.9) }

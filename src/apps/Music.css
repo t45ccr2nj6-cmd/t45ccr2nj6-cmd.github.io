@@ -1,0 +1,370 @@
+/* ============================================================
+   音乐（浅色 iOS 风格）
+   ============================================================ */
+
+.mus-app {
+  --page-bg: #fff;
+  --page-fg: #000;
+  --nav-bg: rgba(255, 255, 255, 0.82);
+}
+
+.mus-header-sub {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(60, 60, 67, 0.5);
+  padding-bottom: 2px;
+}
+
+.mus-scroll {
+  padding-top: calc(var(--status-bar-h) + 58px);
+  padding-bottom: 100px;
+}
+
+.mus-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  margin: 2px 16px 16px;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: rgba(118, 118, 128, 0.12);
+  color: rgba(60, 60, 67, 0.55);
+  font-size: 15px;
+}
+
+.mus-section-title {
+  padding: 8px 18px 8px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: #000;
+}
+
+/* —— 歌曲列表 —— */
+.mus-list {
+  margin: 0 12px 12px;
+  border-radius: 14px;
+  background: #f7f7f9;
+  overflow: hidden;
+}
+.mus-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  background: none;
+  position: relative;
+}
+.mus-row:active { background: rgba(0, 0, 0, 0.06) }
+.mus-row::after {
+  content: '';
+  position: absolute;
+  left: 78px;
+  right: 0;
+  bottom: 0;
+  height: 0.5px;
+  background: rgba(60, 60, 67, 0.16);
+}
+.mus-row:last-child::after { display: none }
+
+.mus-row-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mus-row-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: #111;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mus-row-artist {
+  font-size: 12.5px;
+  color: rgba(60, 60, 67, 0.55);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mus-row-dur {
+  flex: 0 0 auto;
+  font-size: 12.5px;
+  color: rgba(60, 60, 67, 0.45);
+}
+
+/* —— 专辑封面 —— */
+.mus-art-cover { object-fit: cover; display: block }
+.mus-art {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.mus-art-ring {
+  position: absolute;
+  width: 62%;
+  height: 62%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+.mus-art-glow {
+  position: absolute;
+  width: 34%;
+  height: 34%;
+  right: 12%;
+  bottom: 12%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  filter: blur(6px);
+}
+
+/* —— 歌单 —— */
+.mus-playlist {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f7f7f9;
+}
+.mus-playlist-cover-img {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.mus-playlist-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.mus-playlist-name { font-size: 16px; font-weight: 600 }
+.mus-playlist-sub { font-size: 12.5px; color: rgba(60, 60, 67, 0.55) }
+.mus-spacer { height: 12px }
+
+/* —— 迷你播放条 —— */
+.mus-mini {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 30px;
+  z-index: 26;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  color: #111;
+}
+.mus-mini-tap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+}
+.mus-mini-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mus-mini-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.mus-mini-btn:active { background: rgba(0, 0, 0, 0.06) }
+
+/* ============================================================
+   正在播放
+   ============================================================ */
+
+.mus-player {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: #111;
+}
+.mus-player-bg {
+  position: absolute;
+  inset: 0;
+  transition: background 0.4s ease;
+}
+.mus-player-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--status-bar-h) + 44px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 14px 8px;
+  z-index: 10;
+}
+.mus-nav-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #111;
+}
+.mus-nav-btn:active { background: rgba(0, 0, 0, 0.06) }
+.mus-player-nav-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: rgba(60, 60, 67, 0.6);
+  padding-bottom: 8px;
+}
+
+.mus-player-body {
+  position: absolute;
+  top: calc(var(--status-bar-h) + 44px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 34px 40px;
+}
+
+.mus-now {
+  text-align: center;
+  margin-top: 26px;
+  width: 100%;
+}
+.mus-now-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  color: #000;
+}
+.mus-now-artist {
+  margin-top: 3px;
+  font-size: 14.5px;
+  color: rgba(60, 60, 67, 0.7);
+}
+
+/* —— 进度条 —— */
+.mus-progress {
+  width: 100%;
+  margin-top: 22px;
+}
+.mus-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 3px;
+  outline: none;
+}
+.mus-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #3a3a3c;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.mus-times {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: rgba(60, 60, 67, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+/* —— 控制 —— */
+.mus-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+  width: 100%;
+  margin-top: 18px;
+}
+.mus-ctrl { display: flex; align-items: center; justify-content: center }
+.mus-ctrl:active { opacity: 0.6 }
+.mus-play {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.055);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+.mus-play:active { background: rgba(0, 0, 0, 0.12) }
+
+/* —— 音量 —— */
+.mus-volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 26px;
+}
+.mus-volume-track {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.12);
+}
+.mus-volume-fill {
+  width: 62%;
+  height: 100%;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* —— 底部动作 —— */
+.mus-bottom-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+  padding-bottom: 6px;
+}
+.mus-bottom-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mus-track-index {
+  font-size: 11.5px;
+  color: rgba(60, 60, 67, 0.45);
+}
